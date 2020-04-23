@@ -1,10 +1,11 @@
 package com.muti.learning.Java14Funcional.functionalInterfaces;
 
+import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
-public class CustomOperator {
+public class CustomOperatorPOC {
 
    public static void main(final String[] args) {
       // Java8 Function<T,R> is a Interface that enables to create a function that receives a T type input and return a
@@ -15,7 +16,12 @@ public class CustomOperator {
       final UnaryOperator<Double> squareRoot = Math::sqrt;
       
       // BinaryOperator is a BiFunction<T,U,R> where T, U and R are of the same data type.
+      final BiFunction<Integer,Integer,Double> curveSurface = (x, y) -> Math.sqrt(x) + Math.sqrt(y);
+      
+      // BinaryOperator is a BiFunction<T,U,R> where T, U and R are of the same data type.
       final BinaryOperator<Double> divide = (x, y) -> x / y;
+      
+      
       
       
       final Trifunction<Double, Double, Double, String> paramPrinter = (a, b, c) -> 
@@ -37,13 +43,10 @@ public class CustomOperator {
       System.out.println(formatDouble.apply(raizCuadraticaPositiva.apply(10.0, 2.5, -1.5)));
       System.out.println(formatDouble.apply(raizCuadraticaNegativa.apply(10.0, 2.5, -1.5)));
       
+      
+      
    }
+
    
-   
-   //Using this annotation with an interface and adding the apply signature, custom Function definitions can be done;
-   @FunctionalInterface
-   public interface Trifunction<T, U, V, W> {
-      W apply(T operadorTipoT, U operadorTipoU, V operadorTipoV);
-   }
 
 }

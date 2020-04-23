@@ -1,4 +1,4 @@
-package com.muti.learning.Java14Funcional.javaImprovement;
+package com.muti.learning.Java14Funcional.functionalInterfaces;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 //Java 9: Stream API improvements
-public class JavaStreamNinePOC {
+public class StreamWithPredicatesPOC {
 
    private static Predicate<Integer> isEven = i -> (i % 2 == 0);
 

@@ -7,6 +7,20 @@ import java.util.stream.Stream;
 public class CustomStreams {
 
    public static void main(final String[] args) {
+      
+      
+      final String names[] = { "Uno", "Dos", "Ultraviolento", "Y AHORA QUE PASA?", "UNO" };
+      final Stream<String> streamNames = Stream.of(names);
+      // Streams cannot be operated more than one time, unless the flows are chained
+      // final Stream<String> emphasisStream = streamNames.map(name -> name + "!!");
+      // emphasisStream.forEach(name -> System.out.println(name));
+      
+      //There are two types of stream operations: Middle and Final operations
+      //Middle operations receive an stream and return another stream, for methods as: map, flatmap, filter, limit, peek, skip, distinct
+      //Final operations return an object, even a Void object as the case of forEach
+      streamNames.map(name -> name + "!!").filter(name -> name.contains("U")).forEach(System.out::println);
+
+      
       // IntStream is an obligatory class when defining a Stream of Integers
       // Using .iterate will fill the stream with items that follow the function
       final IntStream infinityStream = IntStream.iterate(0, x -> x + 1);
@@ -28,6 +42,7 @@ public class CustomStreams {
       final Stream<Double> convergentSeriesHalfs = Stream.iterate(0.0, x -> 1 / Math.pow(2, x));
       final Optional<Double> sumOfInfinity = convergentSeriesHalfs.limit(1000).peek(System.out::println)
             .reduce((a, x) -> a + x);
+      
       sumOfInfinity.ifPresent(System.out::println);
 
       final Stream<Integer> firstTenNumbersStream = Stream.iterate(0, i -> i + 1).limit(10);
