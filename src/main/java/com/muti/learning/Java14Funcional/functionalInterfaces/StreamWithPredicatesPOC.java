@@ -13,7 +13,7 @@ public class StreamWithPredicatesPOC {
    public static void main(String[] args) {
       streamTakeWhile();
       streamDropWhile();
-      streamFilter();
+      streamFilterCollect();
       streamOfNullable();
       streamIteration(10);
       
@@ -21,10 +21,17 @@ public class StreamWithPredicatesPOC {
    
    
    // Filter will take all elements that comply with the predicate
-   public static void streamFilter() {
+   public static void streamFilterCollect() {
       List<Integer> list = Stream.of(0, 2, 66, 4, 120, 777, 88, 44, 22, 880).filter(isEven)
             .collect(Collectors.toList());
       System.out.println(list);
+   }
+   
+   // Take while will drop all the elements of the stream in order until the predicate is not met
+   public static void streamIteration(final int limit) {
+      Stream.iterate(1, i -> i <= limit, i -> i + 1)  
+      .map(x -> x * x)
+      .forEach(System.out::println);  
    }
    
    // Enables to create a stream of null elements
@@ -49,12 +56,6 @@ public class StreamWithPredicatesPOC {
       System.out.println(list);
    }
    
-   // Take while will drop all the elements of the stream in order until the predicate is not met
-   public static void streamIteration(final int limit) {
-      Stream.iterate(1, i -> i <= limit, i -> i + 1)  
-      .map(x -> x * x)
-      .forEach(System.out::println);  
-   }
    
    
    

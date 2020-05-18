@@ -9,11 +9,11 @@ public class OptionalsPOC {
 
 
    
-   public static final Consumer<String> formattedPrint = x -> System.out.print(x+"::Numero de Caracteres:"+x.length()+"--------------");
+   public static final Consumer<String> charactersPrint = x -> System.out.print(x+"::Numero de Caracteres:"+x.length()+"--------------");
    
    public static void main(final String[] args) {
 
-      final String names[] = { "Ali", null, "Xi", null };
+      final String names[] = { "Ali", null, "Xhi", null };
       List<Optional<String>> nameStream = new ArrayList<>();
       
       for (String name : names) {
@@ -24,7 +24,7 @@ public class OptionalsPOC {
          String uppercase = null;
          uppercase = optional.orElse("\nEsto es Nulo!").toUpperCase();
          System.out.println(uppercase);
-         optional.ifPresent(formattedPrint);
+         optional.ifPresent(charactersPrint);
       }
    }
    
