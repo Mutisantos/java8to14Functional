@@ -14,13 +14,13 @@ public class OptionalsPOC {
    public static void main(final String[] args) {
 
       final String names[] = { "Ali", null, "Xhi", null };
-      List<Optional<String>> nameStream = new ArrayList<>();
+      List<Optional<String>> nameListWithNulls = new ArrayList<>();
       
       for (String name : names) {
-         nameStream.add(mvpOptionalName(name));
+         nameListWithNulls.add(mvpOptionalName(name));
       }
       
-      for (Optional<String> optional : nameStream) {
+      for (Optional<String> optional : nameListWithNulls) {
          String uppercase = null;
          uppercase = optional.orElse("\nEsto es Nulo!").toUpperCase();
          System.out.println(uppercase);
@@ -29,7 +29,7 @@ public class OptionalsPOC {
    }
    
    public static Optional<String> mvpOptionalName(final String name) {
-      return Optional.ofNullable(name);
+      return Optional.of(name);
    }
    
    
